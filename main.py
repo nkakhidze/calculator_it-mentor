@@ -37,10 +37,6 @@ def check_operand(operand):
     return operand
 
 
-def check_only_one(input_str):
-    pass
-
-
 def summ(a, b):
     return a + b
 def sub(a, b):

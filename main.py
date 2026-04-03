@@ -1,24 +1,14 @@
 
 def main(input_str: str):
-    if not input_str:
-        raise ValueError("Пустая строка")
-
     input_str = input_str.replace(" ", "")
+    if not input_str:
+        raise ValueError('Введена пустая строка, введите выражение типа "1 + 2"')
 
     operator = found_operators(input_str)
     a, b = input_str.split(operator)
     a, b = check_operand(a), check_operand(b)
 
     return operations_dictionary[operator](a,b)
-
-
-
-    print(a, operator, b, "=", a+b)
-
-
-
-
-
 
 
 def found_operators(input_str):
@@ -36,6 +26,7 @@ def found_operators(input_str):
     else:
         return operator
 
+
 def check_operand(operand):
     try:
         operand = int(operand)
@@ -46,10 +37,8 @@ def check_operand(operand):
     return operand
 
 
-
 def check_only_one(input_str):
     pass
-
 
 
 def summ(a, b):
@@ -59,10 +48,13 @@ def sub(a, b):
 def mul(a, b):
     return a * b
 def div(a, b):
-    if b == 0:
-        raise ValueError("Скорректируйте второе значение: на ноль делить нельзя")
     return a // b
 
-operations_dictionary = {"+": summ,"-": sub,"*":mul,"/":div}
+operations_dictionary = {
+    "+": summ,
+    "-": sub,
+    "*":mul,
+    "/":div
+}
 
 print(main(input()))
